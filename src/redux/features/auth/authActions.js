@@ -13,8 +13,8 @@ export const userLogin = createAsyncThunk(
       });
       //store token
       if (data.success) {
+        alert(data.message);
         localStorage.setItem("token", data.token);
-        toast.success(data.message);
         window.location.replace("/");
       }
       return data;
@@ -59,7 +59,7 @@ export const userRegister = createAsyncThunk(
       });
       if (data?.success) {
         alert("User Registered Succesfully");
-        toast.success("User Registered Succesfully");
+        // toast.success("User Registered Succesfully");
         window.location.replace("/login");
       }
     } catch (error) {
