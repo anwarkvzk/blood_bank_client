@@ -27,11 +27,11 @@ function Form({ formType, submitBtn, formTitle }) {
               role,
               email,
               password,
-              organisationName,
               phone,
+              organisationName,
+              address,
               hospitalName,
-              website,
-              address
+              website
             );
         }}
       >
@@ -87,7 +87,6 @@ function Form({ formType, submitBtn, formTitle }) {
               id="organisationRadio"
               value={"organisation"}
               onChange={(e) => setRole(e.target.value)}
-              defaultChecked
             />
             <label htmlFor="organisationRadio" className="form-check-label">
               Organisation
@@ -122,17 +121,16 @@ function Form({ formType, submitBtn, formTitle }) {
             case formType === "register": {
               return (
                 <>
-                  {role === "admin" ||
-                    (role === "donar" && (
-                      <InputType
-                        labelText={"Name"}
-                        labelFor={"forName"}
-                        inputType={"text"}
-                        name={"name"}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    ))}
+                  {(role === "admin" || role === "donar") && (
+                    <InputType
+                      labelText={"Name"}
+                      labelFor={"forName"}
+                      inputType={"text"}
+                      name={"name"}
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  )}
                   {role === "organisation" && (
                     <InputType
                       labelText={"Organisation Name"}
