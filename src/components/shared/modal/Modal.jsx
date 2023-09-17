@@ -1,11 +1,38 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import InputType from "../../shared/form/InputType";
+import API from "../../../services/API";
 
 function Modal() {
   const [inventoryType, setInventoryType] = useState("in");
   const [bloodGroup, setBloodGroup] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [donarEmail, setDonarEmail] = useState("");
+  const { user } = useSelector((state) => state.auth);
+
+  //handle model data
+  const handleModalSubmit = async () => {
+    try {
+      if (!bloodGroup || !quantity) {
+        return alert("Please Provide All Fields");
+      }
+      const { data } = await API.post("/inventory/create-inventory", {
+        donarEmail,
+        email: user?.email,
+        organisation: user?._id,
+        inventoryType,
+        bloodGroup,
+        quantity,
+      });
+      if (data?.success) {
+        alert("New Record Created");
+        window.location.reload();
+      }
+    } catch (error) {
+      window.location.reload();
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -86,7 +113,7 @@ function Modal() {
                 onChange={(e) => setDonarEmail(e.target.value)}
               />
               <InputType
-                labelText={"Quantity"}
+                labelText={"Quantity (ML)"}
                 labelFor={"quantity"}
                 inputType={"Number"}
                 value={quantity}
@@ -101,7 +128,10 @@ function Modal() {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary"
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleModalSubmit}
               >
                 Submit
               </button>
