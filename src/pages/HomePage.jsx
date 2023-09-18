@@ -16,7 +16,7 @@ function HomePage() {
       const { data } = await API.get("/inventory/get-inventory");
       if (data?.success) {
         setData(data?.inventory);
-        console.log(data);
+        // console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -58,7 +58,7 @@ function HomePage() {
                   <tr key={record._id}>
                     <td>{record.bloodGroup}</td>
                     <td>{record.inventoryType}</td>
-                    <td>{record.quantity}</td>
+                    <td>{record.quantity} (ML)</td>
                     <td>{record.donarEmail}</td>
                     <td>{moment(record.createdAt).format('DD/MM/YYYY hh:mm A')}</td>
                   </tr>
