@@ -35,7 +35,7 @@ function HomePage() {
         <>
           <div className="container">
             <h4
-              className="ms-4"
+              className="ms-3"
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
               style={{ cursor: "pointer" }}
@@ -59,7 +59,7 @@ function HomePage() {
                     <td>{record.bloodGroup}</td>
                     <td>{record.inventoryType}</td>
                     <td>{record.quantity} (ML)</td>
-                    <td>{record.donarEmail}</td>
+                    <td>{record.email}</td>
                     <td>{moment(record.createdAt).format('DD/MM/YYYY hh:mm A')}</td>
                   </tr>
                 ))}
