@@ -1,6 +1,6 @@
 .sidebar {
     height: 100vh !important;
-    /* border-radius: 5px; */
+    border-radius: 5px;
     background-color: #2e3200;
     box-shadow: 0 0 2px gray;
     color: white;
@@ -8,6 +8,7 @@
 
 .menu {
     padding-top: 100px;
+    
 }
 
 .menu-item {
