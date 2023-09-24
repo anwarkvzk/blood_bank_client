@@ -38,3 +38,21 @@
 .active i {
     color: #2e3200;
 }
+
+.myImage {
+    /* NOTE: these commands only work for `img` tags. 
+	div tags use background-size, background-image, background-position */
+    height: 200px;
+    /* need to define height and width explicitly (to my understanding) */
+    width: 200px;
+
+    /* shift image around in the image box */
+    object-fit: cover;
+    /* cover or contain */
+    object-position: center;
+    /* top, bottom, left, right, custom are also valid options */
+
+    border: 1px solid black;
+    /* see edges of container for seeing if we got any errors */
+
+}
